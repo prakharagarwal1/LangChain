@@ -2,13 +2,14 @@ import { ChatOpenAI } from "@langchain/openai";
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RecommendedMovies, recommendedMoviesSchema } from "../schema";
 import { PROMPT_TEMPLATES } from "../utils/prompts";
+import config from "../config";
 
 const llm = new ChatOpenAI({
-  model: process.env.OPENAI_MODEL ?? "dots-studio/dots-3-note-preview:free",
-  temperature: Number(process.env.OPENAI_TEMPERATURE ?? 0.3),
+  model: config.openai.model,
+  temperature: config.openai.temperature,
   configuration: {
-    baseURL: process.env.OPENAI_BASE_URL ?? "https://openrouter.ai/api/v1",
-    apiKey: process.env.OPENAI_API_KEY,
+    baseURL: config.openai.baseURL,
+    apiKey: config.openai.apiKey,
   },
 });
 const promptTemplate = ChatPromptTemplate.fromMessages([

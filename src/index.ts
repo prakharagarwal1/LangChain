@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { Request, Response } from 'express';
 import { recommendRouter } from './routes';
+import config from './config';
 const app: express.Express = express();
 
 app.use(cors());
@@ -13,7 +14,6 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 app.use("/api/recommend",recommendRouter);
-const PORT: number = parseInt(process.env.PORT ?? '3000', 10);
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(config.app.port, () => {
+  console.log(`Server is running on port ${config.app.port}`);
 });
