@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Build output
+dist/
+build/
+out/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Logs
+logs/
+*.log
+access.log
+error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+desktop.ini
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# Testing
+.nyc_output/
+.coverage
+htmlcov/
+.pytest_cache/
+coverage/
+
+# Misc
+*.tgz
+.DS_Store
+.env*.local
