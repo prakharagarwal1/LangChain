@@ -18,14 +18,14 @@ export interface Config {
 const config: Config = {
   openai: {
     apiKey: process.env.OPENAI_API_KEY ?? "",
-    baseURL: process.env.OPENAI_BASE_URL ?? "https://openrouter.ai/api/v1",
-    model: process.env.OPENAI_MODEL ?? "dots-studio/dots-3-note-preview:free",
+    baseURL: process.env.OPENAI_BASE_URL ?? "",
+    model: process.env.OPENAI_MODEL ?? "",
     temperature: Number(process.env.OPENAI_TEMPERATURE ?? 0.3),
   },
   app: {
     port: parseInt(process.env.PORT ?? "3000", 10),
-    url: process.env.APP_URL ?? "http://localhost:3000",
-    name: process.env.APP_NAME ?? "LangChain App",
+    url: process.env.APP_URL ?? "",
+    name: process.env.APP_NAME ?? "",
   },
 };
 
