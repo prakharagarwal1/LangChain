@@ -1,7 +1,10 @@
 import { ChatOpenAI } from "@langchain/openai";
-import { ChatPromptTemplate } from '@langchain/core/prompts';
+import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { RecommendedMovies, recommendedMoviesSchema } from "../schema";
-import { PROMPT_TEMPLATES } from "../utils/prompts";
+import {
+  MOVIE_RECOMMENDATION_SYSTEM_PROMPT,
+  MOVIE_RECOMMENDATION_USER_PROMPT,
+} from "../utils/prompts";
 import config from "../config";
 
 const llm = new ChatOpenAI({
@@ -15,28 +18,35 @@ const llm = new ChatOpenAI({
 const promptTemplate = ChatPromptTemplate.fromMessages([
   {
     role: "system",
-    content: PROMPT_TEMPLATES.MOVIE_RECOMMENDATION.system,
+    content: MOVIE_RECOMMENDATION_SYSTEM_PROMPT,
   },
   {
     role: "user",
-    content: PROMPT_TEMPLATES.MOVIE_RECOMMENDATION.user,
+    content: MOVIE_RECOMMENDATION_USER_PROMPT,
   },
 ]);
 
-
-export const getMovieRecommendations = async( prompt:string,genre: string, mood: string, count: number):
-Promise<RecommendedMovies> =>
-  {
-
-  const getStructuredResponseLLM= llm.withStructuredOutput(recommendedMoviesSchema)
-  const messages = await promptTemplate.pipe(getStructuredResponseLLM);
-  const response = await messages.invoke({
- userPrompt: prompt,
- genre: genre,
- mood: mood,
- count: count
-
-  });
-  console.log("Structured response:", response);
-return response;
-}
+export const getMovieRecommendations = async (
+  prompt: string,
+  genre: string,
+  mood: string,
+  count: number,
+): Promise<RecommendedMovies> => {
+  const getStructuredResponseLLM = llm.withStructuredOutput(
+    recommendedMoviesSchema,
+  );
+  try {
+    const messages = await promptTemplate.pipe(getStructuredResponseLLM);
+    const response = await messages.invoke({
+      userPrompt: prompt,
+      genre: genre,
+      mood: mood,
+      count: count,
+    });
+    console.log("Structured response:", response);
+    return response;
+  } catch (error) {
+    console.error("Error getting movie recommendations:", error);
+    throw error;
+  }
+};

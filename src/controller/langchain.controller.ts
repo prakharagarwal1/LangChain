@@ -11,8 +11,8 @@ export async function recommendedMovies(req: Request, res: Response) {
     } = req.body;
     const recommendations = await getMovieRecommendations(userPrompt, genre, mood, count);
 res.status(200).json({ recommendations });  
-} catch {
-console.error('Error occurred while fetching movie recommendations');
-res.status(500).json({ error: 'An error occurred while fetching movie recommendations' });
+} catch (error) {
+console.error('Error occurred while fetching movie recommendations', error);
+res.status(500).json({ error: 'An error occurred while fetching movie recommendations', details: error instanceof Error ? error.message : String(error) });
   }
 }

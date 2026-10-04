@@ -106,15 +106,15 @@ Returns a simple status message.
 
 All configuration is read from environment variables:
 
-| Variable               | Default                                  | Description                                  |
-| ---------------------- | ---------------------------------------- | -------------------------------------------- |
-| `OPENAI_API_KEY`       | (required)                               | Your OpenRouter API key                      |
-| `OPENAI_BASE_URL`      | `https://openrouter.ai/api/v1`           | OpenRouter API base URL                      |
-| `OPENAI_MODEL`         | `dots-studio/dots-3-note-preview:free`   | Model name                                   |
-| `OPENAI_TEMPERATURE`   | `0.3`                                    | LLM sampling temperature                     |
-| `PORT`                 | `3000`                                   | Port the server listens on                   |
-| `APP_URL`              | `localhost`                              | Application base URL                         |
-| `APP_NAME`             | `LangChain App`                          | Application name                             |
+| Variable             | Default                                | Description                |
+| -------------------- | -------------------------------------- | -------------------------- |
+| `OPENAI_API_KEY`     | (required)                             | Your OpenRouter API key    |
+| `OPENAI_BASE_URL`    | `https://openrouter.ai/api/v1`         | OpenRouter API base URL    |
+| `OPENAI_MODEL`       | `dots-studio/dots-3-note-preview:free` | Model name                 |
+| `OPENAI_TEMPERATURE` | `0.3`                                  | LLM sampling temperature   |
+| `PORT`               | `3000`                                 | Port the server listens on |
+| `APP_URL`            | `localhost`                            | Application base URL       |
+| `APP_NAME`           | `LangChain App`                        | Application name           |
 
 ## Project Structure
 
